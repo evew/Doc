@@ -29,10 +29,12 @@ Adding your SSH key to the ssh-agent
 
 Create a directory and use *git init* to create repository
 
-`$ mkdir newrepo `
+`$ mkdir newrepo`  
+
 `$ git init`
 
-Or 
+Or  
+
 `$ git init newrepo`
 
 You can also clone from Remote
