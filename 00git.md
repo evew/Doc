@@ -24,3 +24,18 @@ Generating a new SSH key
     Enter same passphrase again: [Type passphrase again]
 
 Adding your SSH key to the ssh-agent
+
+## Create a new repository
+
+Create a directory and use *git init* to create repository
+
+`$ mkdir newrepo `
+`$ git init`
+
+Or 
+`$ git init newrepo`
+
+You can also clone from Remote
+`git clone https://github.com/evew/Doc.git`
+
+
