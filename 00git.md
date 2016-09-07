@@ -37,7 +37,8 @@ Or
 
 `$ git init newrepo`
 
-You can also clone from Remote
+You can also clone from Remote  
+
 `git clone https://github.com/evew/Doc.git`
 
-
+Now you have a new repository! haha.
