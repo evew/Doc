@@ -42,3 +42,17 @@ You can also clone from Remote
 `git clone https://github.com/evew/Doc.git`
 
 Now you have a new repository! haha.
+
+## Git commands
+
+Git setting
+
+    # setting list
+    $ git config --list
+
+    # setting edit
+    $ git config -e [--global]
+
+    # name and email
+    $ git config --global user.name "youname"
+    $ git config --blobal user.email "your email address"
