@@ -10,4 +10,16 @@
 
 and so on
 
+### List
+
+1. "1." + Space;
+*  "*"  + Space
+-  "-"  + Space;
+
+### Quote
+
+> ">" + text;
+
+### Pictures and Links
+
 
