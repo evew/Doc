@@ -12,14 +12,22 @@ and so on
 
 ### List
 
-1. "1." + Space;
-*  "*"  + Space
--  "-"  + Space;
+1. '1.' + Space;
+*  '*'  + Space;
+-  '-'  + Space;
 
 ### Quote
 
-> ">" + text;
+> '>' + text;
 
 ### Pictures and Links
 
+Picture: '![](){ImgCap}{/ImgCap}'
 
+Link: []()
+
+### Emphasize and Strong
+
+*emphasize* '*text*' or '_text_'
+
+**strong** '**text**'
