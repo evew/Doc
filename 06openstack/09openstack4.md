@@ -182,4 +182,94 @@
 
     sudo vim /etc/neutron/dhcp_agent.ini
 
+    [DEFAULT] 
+    interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
+    dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
+    enable_isolated_metadata = True
+
+配置元数据代理
+
+    sudo vim /etc/neutron/netadata_agent.ini
+
+    [DEFAULT]
+    nova_metadata_ip = svctl1
+    metadata_proxy_shared_secret = METADATA_SECRET
+
+重启网络服务组件
+
+    sudo service neutron-linuxbridge-agnet restart
+    sudo service neutron-dhcp-agent restart
+    sudo service neutron-metadata-agent restart
+    sudo service neutron-l3-agent restart
+
+### 部署节点：Compute Node
+
+安装网络服务组件
+
+    sudo apt-get install neutron-linuxbridge-agent
+
+在[database]处注释掉其他所有设置，因为compute节点不需要直接访问数据库。
+
+    sudo vim /etc/neutron/neutron.conf
+
+    [DEFAUTL]
+    rpc_backend = rabbit
+    auth_strategy = keystone
+
+    [oslo_messaging_rabbit]
+    rabbit_host = svctl1
+    rabbit_userid = openstack
+    rabbit_password = RABBIT_PASS
+
+    [keystone_authtoken]
+    auth_uri = http://svctl1:5000
+    auth_url = http://svctl1:35357
+    memcached_servers = svctl1:11211
+    auth_type = password
+    project_domain_name = default
+    user_domain_name = default
+    project_name = service
+    username = neutron
+    password = NEUTRON_PASS
+
+配置网络设置
+
+    sudo vim /etc/neutron/plugins/ml2/linuxbridge_agent.ini
+
+    [linux_bridge]
+    physical_interface_mappings = provider:enp3s0f0
+    [vxlan]
+    enable_vxlan = True
+    local_ip = 10.0.0.31
+    l2_population = True
+    [securitygroup]
+    enable_security_group = True
+    firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+
+配置计算服务访问网络
+
+    sudo vim /etc/nova/nova.conf
+
+    [neutron]
+    url = http://svctl1:9696
+    auth_url = http://svctl1:35357
+    auth_type = password
+    project_domain_name = default
+    user_domain_name = default
+    region_name = RegionOne
+    project_name = service
+    username = neutron
+    password = NEUTRON_PASS
+
+重启服务
+
+    sudo service nova-compute restart
+    sudo service neutron-linuxbridge-agent restart
+
+在controller node上验证
+
+    source ~/.openstack/.admin_openrc 
+    neutron ext-list
+    neutron agent-list
+
     

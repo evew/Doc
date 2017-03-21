@@ -28,3 +28,7 @@
 - '<C-r>'
 
 
+### install vim plugin
+
+    cd ~/.vim_x
+    git clone git://github.com/youown/vimplugin.git sources_non_forked/vimplugin

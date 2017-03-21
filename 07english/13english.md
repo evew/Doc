@@ -1,5 +1,7 @@
 # English
 
+    authorized ['ɔ:θəraɪzd] 授权，经授权的
+
     application [ˌæplɪˈkeɪʃn] 应用
 
     architecture [ˈɑ:kɪtektʃə(r)] 架构
@@ -44,4 +46,4 @@
 
     batch [bætʃ] 批处理
 
-
+    priority [praɪˈɔ:rəti] 优先，优先权
